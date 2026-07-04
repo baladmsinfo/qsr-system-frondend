@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-sheet color="primary" class="pa-4 text-white d-flex align-center ga-3">
-      <v-btn icon="mdi-arrow-left" variant="text" color="white" @click="$router.push('/cart')" />
-      <h1 class="text-h6 font-weight-bold mb-0">Checkout</h1>
-    </v-sheet>
+    <div class="customer-hero pa-4 pb-5 text-white d-flex align-center ga-3">
+      <v-btn icon="mdi-arrow-left" variant="tonal" color="white" size="small" @click="$router.push('/cart')" />
+      <h1 class="text-h5 font-weight-bold mb-0">Checkout</h1>
+    </div>
 
     <v-container>
       <div class="app-card pa-4 mb-4">

@@ -1,37 +1,38 @@
 <template>
   <div>
     <!-- Branch header -->
-    <v-sheet color="primary" class="pa-4 text-white">
-      <div class="text-caption" style="opacity: 0.85">{{ session.companyName }}</div>
+    <div class="customer-hero pa-5 pb-6 text-white">
+      <div class="d-flex align-center ga-2 mb-1" style="opacity: 0.8">
+        <v-icon size="14" color="white">mdi-storefront-outline</v-icon>
+        <span class="text-caption">{{ session.companyName }}</span>
+      </div>
       <div class="d-flex align-center justify-space-between">
-        <h1 class="text-h6 font-weight-bold mb-0">{{ session.branchName }}</h1>
+        <h1 class="text-h5 font-weight-bold mb-0">{{ session.branchName }}</h1>
         <div class="d-flex align-center ga-2">
           <v-chip size="small" color="white" variant="flat" class="text-primary font-weight-bold">
             {{ session.tableNo }}
           </v-chip>
-          <v-btn icon="mdi-history" variant="text" color="white" size="small" @click="router.push('/history')" />
+          <v-btn icon="mdi-history" variant="tonal" color="white" size="small" @click="router.push('/history')" />
         </div>
       </div>
-    </v-sheet>
+    </div>
 
-    <v-container class="pt-4">
+    <v-container class="pt-4 px-4">
       <v-text-field
         v-model="search"
         placeholder="Search menu..."
         prepend-inner-icon="mdi-magnify"
-        variant="solo"
         density="comfortable"
-        flat
+        bg-color="white"
         hide-details
-        rounded="lg"
         class="mb-4"
         clearable
       />
 
-      <v-slide-group v-if="!search" show-arrows class="mb-4">
+      <v-slide-group v-if="!search" show-arrows class="mb-5">
         <v-slide-group-item v-for="cat in menu.categories" :key="cat.id">
           <v-chip
-            class="me-2"
+            class="me-2 font-weight-medium"
             :color="activeCategoryId === cat.id ? 'primary' : undefined"
             :variant="activeCategoryId === cat.id ? 'flat' : 'tonal'"
             @click="scrollToCategory(cat.id)"

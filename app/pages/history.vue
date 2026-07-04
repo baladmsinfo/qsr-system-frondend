@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-sheet color="primary" class="pa-4 text-white d-flex align-center ga-3">
-      <v-btn icon="mdi-arrow-left" variant="text" color="white" @click="$router.back()" />
-      <h1 class="text-h6 font-weight-bold mb-0">Order History</h1>
-    </v-sheet>
+    <div class="customer-hero pa-4 pb-5 text-white d-flex align-center ga-3">
+      <v-btn icon="mdi-arrow-left" variant="tonal" color="white" size="small" @click="$router.back()" />
+      <h1 class="text-h5 font-weight-bold mb-0">Order History</h1>
+    </div>
 
     <v-container>
       <div v-if="!order.history.length" class="text-center py-12">

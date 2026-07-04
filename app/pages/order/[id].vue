@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-sheet color="primary" class="pa-4 text-white">
-      <h1 class="text-h6 font-weight-bold mb-0">Order Status</h1>
-      <div class="text-caption" style="opacity: 0.85">Token #{{ orderId.slice(0, 8) }}</div>
-    </v-sheet>
+    <div class="customer-hero pa-4 pb-5 text-white">
+      <h1 class="text-h5 font-weight-bold mb-0">Order Status</h1>
+      <div class="text-caption mono-data" style="opacity: 0.85">Token #{{ orderId.slice(0, 8) }}</div>
+    </div>
 
     <v-container v-if="order.currentOrder">
       <div class="app-card pa-4 mb-4">

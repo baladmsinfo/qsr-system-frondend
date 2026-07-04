@@ -35,3 +35,28 @@ body {
 .app-card:hover {
   box-shadow: 0 12px 28px -8px rgba(74, 59, 120, 0.12);
 }
+.app-card--active {
+  border-color: #4A3B78;
+  box-shadow: 0 0 0 1px #4A3B78;
+}
+
+// Branded top hero bar used on every ordering-flow screen (menu, cart,
+// checkout, order tracking, history) for a consistent app-like identity.
+.customer-hero {
+  background: linear-gradient(135deg, #4A3B78 0%, #362A5C 100%) !important;
+  border-radius: 0 0 22px 22px;
+  box-shadow: 0 8px 24px -8px rgba(74, 59, 120, 0.35);
+  position: relative;
+  z-index: 2;
+}
+
+// Sticky bottom action bar pattern (item detail Add-to-cart, etc.)
+.sticky-bottom-bar {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #EAE6F2;
+  box-shadow: 0 -6px 20px -8px rgba(74, 59, 120, 0.15);
+}

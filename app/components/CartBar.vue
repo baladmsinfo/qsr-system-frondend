@@ -26,11 +26,12 @@ const cart = useCartStore()
 <style scoped>
 .cart-bar {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
   z-index: 1000;
   cursor: pointer;
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px -4px rgba(74, 59, 120, 0.4);
 }
 </style>
