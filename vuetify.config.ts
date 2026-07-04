@@ -1,30 +1,30 @@
 import { defineVuetifyConfiguration } from "vuetify-nuxt-module/custom-configuration";
 
-// Same Bucksbox "Artisanal Operations" theme as the admin app, tuned for a
-// mobile-first single-column ordering experience.
+// "Heritage Modernist" theme - monochrome/grayscale palette matching the
+// approved design reference (Hanken Grotesk, black primary, tonal greys).
 export default defineVuetifyConfiguration({
   theme: {
     defaultTheme: "light",
     themes: {
       light: {
         colors: {
-          primary: "#4A3B78",
-          "primary-darken-1": "#392C5E",
-          secondary: "#6B6478",
-          accent: "#7C6BA8",
-          success: "#2E7D5B",
-          warning: "#B8860B",
+          primary: "#000000",
+          "primary-darken-1": "#1C1B1B",
+          secondary: "#424242",
+          accent: "#424242",
+          success: "#5E7355",
+          warning: "#8A6D3B",
           error: "#B3261E",
-          background: "#FAF9FC",
+          background: "#FFFFFF",
           surface: "#FFFFFF",
-          "surface-variant": "#F3F1F8",
-          "on-surface-variant": "#5B5566",
+          "surface-variant": "#F0F0F0",
+          "on-surface-variant": "#444444",
         },
       },
     },
   },
   defaults: {
-    VBtn: { rounded: "lg", class: "text-none font-weight-medium" },
+    VBtn: { rounded: "pill", class: "text-none font-weight-medium" },
     VCard: { rounded: "lg" },
     VTextField: { variant: "outlined", density: "comfortable", color: "primary" },
     VTextarea: { variant: "outlined", density: "comfortable", color: "primary" },

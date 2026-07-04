@@ -1,51 +1,54 @@
 /**
- * Vuetify SASS variable overrides - Bucksbox "Artisanal Operations" theme
- * (mirrors FE's admin theme for a consistent brand across both apps).
+ * "Heritage Modernist" theme - monochrome/grayscale design system, unified
+ * on a single typeface (Hanken Grotesk) across every text role per spec.
  */
 @use 'vuetify/settings' with (
-  $body-font-family: ('Inter', sans-serif),
-  $heading-font-family: ('Manrope', sans-serif),
-  $border-radius-root: 10px
+  $body-font-family: ('Hanken Grotesk', sans-serif),
+  $heading-font-family: ('Hanken Grotesk', sans-serif),
+  $border-radius-root: 12px
 );
 
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
 }
 
 .text-h1, .text-h2, .text-h3, .text-h4, .text-h5, .text-h6,
 .font-weight-bold, .font-weight-semibold, .v-card-title, .v-toolbar-title {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   letter-spacing: -0.01em;
 }
 
-.mono-data, .v-chip {
-  font-family: 'JetBrains Mono', monospace;
+.mono-data {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-weight: 700;
 }
 
 body {
-  background-color: #FAF9FC;
+  background-color: #ffffff;
 }
 
+// Card surface - soft ambient shadow + hairline border per DESIGN.md
+// "Tonal Layering" elevation model.
 .app-card {
   background: #fff;
-  border: 1px solid #EAE6F2;
-  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 .app-card:hover {
-  box-shadow: 0 12px 28px -8px rgba(74, 59, 120, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 .app-card--active {
-  border-color: #4A3B78;
-  box-shadow: 0 0 0 1px #4A3B78;
+  border-color: #000;
+  box-shadow: 0 0 0 1px #000;
 }
 
-// Branded top hero bar used on every ordering-flow screen (menu, cart,
-// checkout, order tracking, history) for a consistent app-like identity.
+// Docked black header, rounded at the bottom - the branded "sheet" used on
+// every ordering-flow screen (menu, cart, checkout, order tracking, history).
 .customer-hero {
-  background: linear-gradient(135deg, #4A3B78 0%, #362A5C 100%) !important;
-  border-radius: 0 0 22px 22px;
-  box-shadow: 0 8px 24px -8px rgba(74, 59, 120, 0.35);
+  background: #000000 !important;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   position: relative;
   z-index: 2;
 }
@@ -57,6 +60,58 @@ body {
   left: 0;
   right: 0;
   background: #fff;
-  border-top: 1px solid #EAE6F2;
-  box-shadow: 0 -6px 20px -8px rgba(74, 59, 120, 0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+// Veg / non-veg selection indicator (minimalist square + centered dot)
+.veg-indicator {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #424242;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 2px;
+}
+.veg-indicator .veg-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.veg-indicator.is-veg .veg-dot { background-color: #5E7355; }
+.veg-indicator.is-nonveg { border-color: #8a2a2a; }
+.veg-indicator.is-nonveg .veg-dot { background-color: #8a2a2a; }
+
+// Persistent bottom tab navigation (mobile app shell)
+.bottom-nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  background: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px 16px 0 0;
+}
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 12px;
+  color: #444444;
+  font-size: 11px;
+  font-weight: 500;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.bottom-nav-item:active {
+  transform: scale(0.94);
+}
+.bottom-nav-item.is-active {
+  color: #000000;
+  font-weight: 700;
 }

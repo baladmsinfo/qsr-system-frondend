@@ -1,15 +1,15 @@
 <template>
   <div>
     <!-- Branch header -->
-    <div class="customer-hero pa-5 pb-6 text-white">
+    <div class="customer-hero pa-5 pb-8 text-white">
       <div class="d-flex align-center ga-2 mb-1" style="opacity: 0.8">
         <v-icon size="14" color="white">mdi-storefront-outline</v-icon>
-        <span class="text-caption">{{ session.companyName }}</span>
+        <span class="text-caption text-uppercase font-weight-medium" style="letter-spacing: 0.06em">{{ session.companyName }}</span>
       </div>
       <div class="d-flex align-center justify-space-between">
         <h1 class="text-h5 font-weight-bold mb-0">{{ session.branchName }}</h1>
         <div class="d-flex align-center ga-2">
-          <v-chip size="small" color="white" variant="flat" class="text-primary font-weight-bold">
+          <v-chip size="small" color="white" variant="flat" class="text-black font-weight-bold">
             {{ session.tableNo }}
           </v-chip>
           <v-btn icon="mdi-history" variant="tonal" color="white" size="small" @click="router.push('/history')" />
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <v-container class="pt-4 px-4">
+    <v-container class="px-4 search-overlap">
       <v-text-field
         v-model="search"
         placeholder="Search menu..."
@@ -25,7 +25,7 @@
         density="comfortable"
         bg-color="white"
         hide-details
-        class="mb-4"
+        class="mb-4 search-field"
         clearable
       />
 
@@ -106,3 +106,15 @@ onMounted(async () => {
   activeCategoryId.value = menu.categories[0]?.id || null
 })
 </script>
+
+<style scoped>
+.search-overlap {
+  position: relative;
+  z-index: 3;
+  margin-top: -20px;
+}
+.search-field :deep(.v-field) {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+</style>

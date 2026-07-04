@@ -1,9 +1,10 @@
 <template>
   <v-main class="bg-background" style="min-height: 100vh">
-    <div class="pb-16">
+    <div :class="showBottomNav ? 'pb-16' : 'pb-4'">
       <slot />
     </div>
-    <CartBar v-if="showCartBar" />
+    <CartBar v-if="showCartBar" :raised="showBottomNav" />
+    <BottomNavBar v-if="showBottomNav" />
   </v-main>
 </template>
 
@@ -13,4 +14,5 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const showCartBar = computed(() => !['cart', 'checkout'].includes(route.name))
+const showBottomNav = computed(() => ['menu', 'history'].includes(route.name))
 </script>

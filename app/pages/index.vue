@@ -19,8 +19,8 @@
   width: 88px;
   height: 88px;
   border-radius: 22px;
-  background: linear-gradient(135deg, #4A3B78 0%, #362A5C 100%);
-  box-shadow: 0 12px 28px -8px rgba(74, 59, 120, 0.35);
+  background: #000000;
+  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.35);
 }
 </style>
 

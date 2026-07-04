@@ -15,7 +15,7 @@ export default defineNuxtConfig({
       title: "Order Online",
       viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
       meta: [
-        { name: "theme-color", content: "#473472" },
+        { name: "theme-color", content: "#000000" },
         { name: "mobile-web-app-capable", content: "yes" },
         { name: "apple-mobile-web-app-capable", content: "yes" },
       ],
@@ -48,9 +48,7 @@ export default defineNuxtConfig({
 
   fonts: {
     families: [
-      { name: "Inter", provider: "google", weights: [400, 500, 600] },
-      { name: "Manrope", provider: "google", weights: [600, 700, 800] },
-      { name: "JetBrains Mono", provider: "google", weights: [500, 600] },
+      { name: "Hanken Grotesk", provider: "google", weights: [400, 500, 600, 700] },
     ],
   },
 

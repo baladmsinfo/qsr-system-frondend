@@ -2,7 +2,7 @@
   <div v-if="item" class="d-flex flex-column" style="min-height: 100vh">
     <div class="position-relative flex-shrink-0">
       <v-img v-if="item.imageUrl" :src="item.imageUrl" height="240" cover />
-      <div v-else class="d-flex align-center justify-center" style="height: 180px; background: #F3F1F8">
+      <div v-else class="d-flex align-center justify-center" style="height: 180px; background: #F0F0F0">
         <v-icon size="48" color="primary">mdi-food</v-icon>
       </div>
       <v-btn icon="mdi-arrow-left" variant="flat" color="white" class="back-btn" @click="$router.back()" />
@@ -10,11 +10,9 @@
 
     <v-container class="flex-grow-1 pb-4">
       <div class="d-flex align-center ga-2 mb-2">
-        <v-icon size="16" :color="item.isVeg ? 'green' : 'red'">
-          {{ item.isVeg ? 'mdi-square-outline' : 'mdi-triangle-outline' }}
-        </v-icon>
-        <v-chip v-if="item.isRecommended" size="x-small" color="amber" variant="tonal">Recommended</v-chip>
-        <v-chip v-if="item.isPopular" size="x-small" color="deep-orange" variant="tonal">Popular</v-chip>
+        <span class="veg-indicator" :class="item.isVeg ? 'is-veg' : 'is-nonveg'"><span class="veg-dot" /></span>
+        <span v-if="item.isRecommended" class="badge-tag">Recommended</span>
+        <span v-if="item.isPopular" class="badge-tag">Popular</span>
       </div>
 
       <h2 class="text-h5 font-weight-bold">{{ item.name }}</h2>
@@ -105,5 +103,16 @@ onMounted(async () => {
   top: 12px;
   left: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.badge-tag {
+  background: #000;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
 }
 </style>

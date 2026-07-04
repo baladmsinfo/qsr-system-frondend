@@ -1,29 +1,27 @@
 <template>
-  <div class="app-card mb-3 d-flex" @click="$emit('open', item)">
-    <div class="flex-grow-1 pa-3">
-      <div class="d-flex align-center ga-1 mb-1">
-        <v-icon size="14" :color="item.isVeg ? 'green' : 'red'">
-          {{ item.isVeg ? 'mdi-square-outline' : 'mdi-triangle-outline' }}
-        </v-icon>
-        <v-chip v-if="item.isRecommended" size="x-small" color="amber" variant="tonal">Recommended</v-chip>
-        <v-chip v-if="item.isPopular" size="x-small" color="deep-orange" variant="tonal">Popular</v-chip>
+  <div class="app-card mb-4 pa-4 d-flex justify-space-between ga-4 item-card" @click="$emit('open', item)">
+    <div class="d-flex flex-column flex-grow-1" style="min-width: 0">
+      <div class="d-flex align-center ga-2 mb-2">
+        <span class="veg-indicator" :class="item.isVeg ? 'is-veg' : 'is-nonveg'"><span class="veg-dot" /></span>
+        <span v-if="item.isRecommended" class="badge-tag">Recommended</span>
+        <span v-if="item.isPopular" class="badge-tag">Popular</span>
       </div>
 
-      <div class="font-weight-bold text-body-1">{{ item.name }}</div>
-      <div class="text-body-2 font-weight-medium text-primary mt-1 mono-data">{{ $formatPrice(item.price) }}</div>
+      <div class="text-subtitle-1 font-weight-bold mb-1">{{ item.name }}</div>
+      <div class="text-body-1 font-weight-bold mono-data">{{ $formatPrice(item.price) }}</div>
 
-      <div v-if="item.description" class="text-caption text-medium-emphasis mt-1 description-clamp">
+      <div v-if="item.description" class="text-body-2 text-medium-emphasis mt-1 description-clamp">
         {{ item.description }}
       </div>
 
-      <div v-if="item.availability !== 'AVAILABLE'" class="mt-1">
-        <v-chip size="x-small" color="grey">{{ item.availability === 'OUT_OF_STOCK' ? 'Out of stock' : 'Unavailable' }}</v-chip>
+      <div v-if="item.availability !== 'AVAILABLE'" class="mt-2">
+        <v-chip size="x-small" color="grey" variant="tonal">{{ item.availability === 'OUT_OF_STOCK' ? 'Out of stock' : 'Unavailable' }}</v-chip>
       </div>
     </div>
 
     <div class="position-relative flex-shrink-0" style="width: 100px">
-      <v-img v-if="item.imageUrl" :src="item.imageUrl" height="100" width="100" cover class="ma-2 rounded-lg" />
-      <div v-else class="d-flex align-center justify-center ma-2 rounded-lg bg-grey-lighten-3" style="height: 100px; width: 84px">
+      <v-img v-if="item.imageUrl" :src="item.imageUrl" height="100" width="100" cover rounded="lg" />
+      <div v-else class="d-flex align-center justify-center rounded-lg" style="height: 100px; width: 100px; background: #f0f0f0">
         <v-icon color="grey">mdi-food</v-icon>
       </div>
 
@@ -31,7 +29,8 @@
         v-if="item.availability === 'AVAILABLE'"
         size="small"
         color="primary"
-        class="quick-add"
+        rounded="pill"
+        class="quick-add font-weight-bold"
         @click.stop="$emit('open', item)"
       >
         ADD
@@ -46,6 +45,14 @@ defineEmits(['open'])
 </script>
 
 <style scoped>
+.item-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.item-card:active {
+  transform: scale(0.99);
+}
+
 .description-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -58,5 +65,17 @@ defineEmits(['open'])
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.badge-tag {
+  background: #000;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
 }
 </style>
