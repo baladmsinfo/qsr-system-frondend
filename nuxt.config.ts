@@ -44,7 +44,15 @@ export default defineNuxtConfig({
   },
 
   css: [],
-  modules: ["@pinia/nuxt", "vuetify-nuxt-module"],
+  modules: ["@nuxt/fonts", "@pinia/nuxt", "vuetify-nuxt-module"],
+
+  fonts: {
+    families: [
+      { name: "Inter", provider: "google", weights: [400, 500, 600] },
+      { name: "Manrope", provider: "google", weights: [600, 700, 800] },
+      { name: "JetBrains Mono", provider: "google", weights: [500, 600] },
+    ],
+  },
 
   vuetify: {
     moduleOptions: {

@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mb-3 d-flex" variant="flat" border @click="$emit('open', item)">
+  <div class="app-card mb-3 d-flex" @click="$emit('open', item)">
     <div class="flex-grow-1 pa-3">
       <div class="d-flex align-center ga-1 mb-1">
         <v-icon size="14" :color="item.isVeg ? 'green' : 'red'">
@@ -10,7 +10,7 @@
       </div>
 
       <div class="font-weight-bold text-body-1">{{ item.name }}</div>
-      <div class="text-body-2 font-weight-medium text-primary mt-1">{{ $formatPrice(item.price) }}</div>
+      <div class="text-body-2 font-weight-medium text-primary mt-1 mono-data">{{ $formatPrice(item.price) }}</div>
 
       <div v-if="item.description" class="text-caption text-medium-emphasis mt-1 description-clamp">
         {{ item.description }}
@@ -37,7 +37,7 @@
         ADD
       </v-btn>
     </div>
-  </v-card>
+  </div>
 </template>
 
 <script setup>

@@ -6,21 +6,21 @@
     </v-sheet>
 
     <v-container v-if="order.currentOrder">
-      <v-card variant="flat" border class="pa-4 mb-4">
+      <div class="app-card pa-4 mb-4">
         <OrderStatusStepper :status="order.currentOrder.status" />
-      </v-card>
+      </div>
 
-      <v-card variant="flat" border class="pa-4 mb-4">
+      <div class="app-card pa-4 mb-4">
         <h3 class="text-subtitle-1 font-weight-bold mb-3">Order Summary</h3>
         <div v-for="item in order.currentOrder.orderItems" :key="item.id" class="d-flex justify-space-between text-body-2 mb-1">
           <span>{{ item.quantity }} &times; {{ item.menuItem?.name }}</span>
-          <span>{{ $formatPrice(item.total) }}</span>
+          <span class="mono-data">{{ $formatPrice(item.total) }}</span>
         </div>
         <v-divider class="my-2" />
         <div class="d-flex justify-space-between font-weight-bold">
-          <span>Total</span><span>{{ $formatPrice(order.currentOrder.totalAmount) }}</span>
+          <span>Total</span><span class="mono-data">{{ $formatPrice(order.currentOrder.totalAmount) }}</span>
         </div>
-      </v-card>
+      </div>
 
       <v-btn block variant="tonal" color="primary" @click="$router.push('/menu')">
         Back to Menu

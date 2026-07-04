@@ -17,7 +17,7 @@
       </div>
 
       <h2 class="text-h6 font-weight-bold">{{ item.name }}</h2>
-      <div class="text-h6 text-primary font-weight-bold my-2">{{ $formatPrice(item.price) }}</div>
+      <div class="text-h6 text-primary font-weight-bold my-2 mono-data">{{ $formatPrice(item.price) }}</div>
 
       <p v-if="item.description" class="text-body-2 text-medium-emphasis">{{ item.description }}</p>
 

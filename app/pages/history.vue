@@ -11,12 +11,11 @@
         <p class="text-medium-emphasis mt-4">No past orders on this device</p>
       </div>
 
-      <v-card
+      <div
         v-for="entry in order.history"
         :key="entry.id"
-        variant="flat"
-        border
-        class="mb-3 pa-3"
+        class="app-card mb-3 pa-3"
+        style="cursor: pointer"
         @click="$router.push(`/order/${entry.id}`)"
       >
         <div class="d-flex justify-space-between align-center">
@@ -24,9 +23,9 @@
             <div class="font-weight-bold">{{ entry.tableNo || 'Order' }}</div>
             <div class="text-caption text-medium-emphasis">{{ new Date(entry.createdAt).toLocaleString() }}</div>
           </div>
-          <div class="font-weight-bold text-primary">{{ $formatPrice(entry.totalAmount) }}</div>
+          <div class="font-weight-bold text-primary mono-data">{{ $formatPrice(entry.totalAmount) }}</div>
         </div>
-      </v-card>
+      </div>
     </v-container>
   </div>
 </template>

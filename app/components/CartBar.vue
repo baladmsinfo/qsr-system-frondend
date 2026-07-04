@@ -8,7 +8,7 @@
     >
       <div class="text-white">
         <div class="text-caption" style="opacity: 0.85">{{ cart.itemCount }} item(s)</div>
-        <div class="text-subtitle-1 font-weight-bold">{{ $formatPrice(cart.total) }}</div>
+        <div class="text-subtitle-1 font-weight-bold mono-data">{{ $formatPrice(cart.total) }}</div>
       </div>
       <v-btn variant="flat" color="white" class="text-primary font-weight-bold">
         View Cart

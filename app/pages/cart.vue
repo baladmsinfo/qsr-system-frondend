@@ -13,12 +13,12 @@
       </div>
 
       <template v-else>
-        <v-card v-for="(item, idx) in cart.items" :key="idx" variant="flat" border class="mb-3 pa-3">
+        <div v-for="(item, idx) in cart.items" :key="idx" class="app-card mb-3 pa-3">
           <div class="d-flex justify-space-between">
             <div>
               <div class="font-weight-bold">{{ item.name }}</div>
               <div class="text-caption text-medium-emphasis" v-if="item.remarks">Note: {{ item.remarks }}</div>
-              <div class="text-body-2 text-primary font-weight-medium mt-1">{{ $formatPrice(item.price) }}</div>
+              <div class="text-body-2 text-primary font-weight-medium mt-1 mono-data">{{ $formatPrice(item.price) }}</div>
             </div>
 
             <div class="d-flex flex-column align-end justify-space-between">
@@ -30,20 +30,20 @@
               </div>
             </div>
           </div>
-        </v-card>
+        </div>
 
-        <v-card variant="flat" border class="pa-4 mt-4">
+        <div class="app-card pa-4 mt-4">
           <div class="d-flex justify-space-between text-body-2 mb-1">
-            <span>Subtotal</span><span>{{ $formatPrice(cart.subtotal) }}</span>
+            <span>Subtotal</span><span class="mono-data">{{ $formatPrice(cart.subtotal) }}</span>
           </div>
           <div class="d-flex justify-space-between text-body-2 mb-1">
-            <span>Tax</span><span>{{ $formatPrice(cart.taxAmount) }}</span>
+            <span>Tax</span><span class="mono-data">{{ $formatPrice(cart.taxAmount) }}</span>
           </div>
           <v-divider class="my-2" />
           <div class="d-flex justify-space-between text-h6 font-weight-bold">
-            <span>Total</span><span>{{ $formatPrice(cart.total) }}</span>
+            <span>Total</span><span class="mono-data">{{ $formatPrice(cart.total) }}</span>
           </div>
-        </v-card>
+        </div>
 
         <v-btn block color="primary" size="large" class="mt-4" @click="$router.push('/checkout')">
           Proceed to Checkout
