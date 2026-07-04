@@ -37,7 +37,7 @@
             <span>Subtotal</span><span class="mono-data">{{ $formatPrice(cart.subtotal) }}</span>
           </div>
           <div class="d-flex justify-space-between text-body-2 mb-1">
-            <span>Tax</span><span class="mono-data">{{ $formatPrice(cart.taxAmount) }}</span>
+            <span>Tax Amount</span><span class="mono-data">{{ $formatPrice(cart.taxAmount) }}</span>
           </div>
           <v-divider class="my-2" />
           <div class="d-flex justify-space-between text-h6 font-weight-bold">
