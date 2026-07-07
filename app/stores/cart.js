@@ -45,6 +45,8 @@ export const useCartStore = defineStore('cart', {
           price: menuItem.price,
           imageUrl: menuItem.imageUrl,
           taxRate: menuItem.taxRate,
+          unitType: menuItem.unitType || null,
+          customUnitLabel: menuItem.customUnitLabel || null,
           quantity,
           remarks,
         })

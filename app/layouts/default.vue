@@ -13,6 +13,9 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const showCartBar = computed(() => !['cart', 'checkout'].includes(route.name))
+// Only the menu (browse) screen shows the floating cart summary bar - the
+// item detail page has its own embedded sticky Add-to-cart bar, and cart/
+// checkout/order/history screens don't need a redundant floating shortcut.
+const showCartBar = computed(() => route.name === 'menu')
 const showBottomNav = computed(() => ['menu', 'history'].includes(route.name))
 </script>

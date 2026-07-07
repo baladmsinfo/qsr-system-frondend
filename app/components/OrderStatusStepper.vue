@@ -7,7 +7,7 @@
     <div v-else class="d-flex flex-column">
       <div v-for="(step, idx) in steps" :key="step.value" class="d-flex ga-3">
         <div class="d-flex flex-column align-center">
-          <v-avatar :color="stateColor(idx)" size="32">
+          <v-avatar :color="stateColor(idx)" size="34" class="step-avatar" :class="{ 'step-avatar--current': idx === currentIndex }">
             <v-icon color="white" size="18">{{ stateIcon(idx) }}</v-icon>
           </v-avatar>
           <div v-if="idx < steps.length - 1" class="connector" :class="{ done: idx < currentIndex }" />
@@ -38,7 +38,7 @@ const steps = [
 const currentIndex = computed(() => steps.findIndex((s) => s.value === props.status))
 
 function stateColor(idx) {
-  if (idx < currentIndex.value) return 'success'
+  if (idx < currentIndex.value) return 'secondary'
   if (idx === currentIndex.value) return 'primary'
   return 'grey-lighten-1'
 }
@@ -51,12 +51,19 @@ function stateIcon(idx) {
 
 <style scoped>
 .connector {
-  width: 2px;
+  width: 3px;
   flex: 1;
   min-height: 24px;
-  background: #e0e0e0;
+  background: #F0E4DC;
+  border-radius: 2px;
 }
 .connector.done {
-  background: rgb(var(--v-theme-success));
+  background: rgb(var(--v-theme-secondary));
+}
+.step-avatar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.step-avatar--current {
+  box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.18);
 }
 </style>

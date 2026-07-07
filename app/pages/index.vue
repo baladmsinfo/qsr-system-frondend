@@ -18,9 +18,9 @@
 .splash-icon {
   width: 88px;
   height: 88px;
-  border-radius: 22px;
-  background: #000000;
-  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.35);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #FF5722, #FF8A50);
+  box-shadow: 0 12px 28px -8px rgba(255, 87, 34, 0.45);
 }
 </style>
 

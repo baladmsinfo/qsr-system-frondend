@@ -2,14 +2,18 @@
   <v-slide-y-reverse-transition>
     <v-sheet
       v-if="cart.itemCount > 0"
-      color="primary"
       class="cart-bar d-flex align-center justify-space-between px-4 py-3"
       :class="{ 'cart-bar--raised': raised }"
       @click="$router.push('/cart')"
     >
-      <div class="text-white">
-        <div class="text-caption" style="opacity: 0.85">{{ cart.itemCount }} item(s)</div>
-        <div class="text-subtitle-1 font-weight-bold mono-data">{{ $formatPrice(cart.total) }}</div>
+      <div class="d-flex align-center ga-3 text-white">
+        <v-avatar size="34" color="rgba(255,255,255,0.22)">
+          <v-icon color="white" size="18">mdi-cart</v-icon>
+        </v-avatar>
+        <div>
+          <div class="text-caption" style="opacity: 0.9">{{ cart.itemCount }} item(s)</div>
+          <div class="text-subtitle-1 font-weight-bold mono-data">{{ $formatPrice(cart.total) }}</div>
+        </div>
       </div>
       <v-btn variant="flat" color="white" class="text-primary font-weight-bold" rounded="pill">
         View Cart
@@ -33,8 +37,9 @@ const cart = useCartStore()
   bottom: 12px;
   z-index: 1000;
   cursor: pointer;
-  border-radius: 16px !important;
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+  border-radius: 18px !important;
+  background: linear-gradient(120deg, #FF5722, #FF8A50) !important;
+  box-shadow: 0 10px 28px -4px rgba(255, 87, 34, 0.45);
   transition: bottom 0.2s ease;
 }
 .cart-bar--raised {

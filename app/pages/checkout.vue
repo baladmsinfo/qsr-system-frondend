@@ -7,7 +7,10 @@
 
     <v-container>
       <div class="app-card pa-4 mb-4">
-        <h3 class="text-subtitle-1 font-weight-bold mb-3">{{ session.branchName }} &middot; {{ session.tableNo }}</h3>
+        <div class="d-flex align-center ga-2 mb-3">
+          <v-icon color="primary" size="20">mdi-storefront-outline</v-icon>
+          <h3 class="text-subtitle-1 font-weight-bold mb-0">{{ session.branchName }} &middot; {{ session.tableNo }}</h3>
+        </div>
 
         <div v-for="(item, idx) in cart.items" :key="idx" class="d-flex justify-space-between text-body-2 mb-1">
           <span>{{ item.quantity }} &times; {{ item.name }}</span>
@@ -16,12 +19,15 @@
 
         <v-divider class="my-2" />
         <div class="d-flex justify-space-between text-h6 font-weight-bold">
-          <span>Total</span><span class="mono-data">{{ $formatPrice(cart.total) }}</span>
+          <span>Total</span><span class="mono-data text-primary">{{ $formatPrice(cart.total) }}</span>
         </div>
       </div>
 
       <div class="app-card pa-4 mb-4">
-        <h3 class="text-subtitle-1 font-weight-bold mb-3">Your details (optional)</h3>
+        <div class="d-flex align-center ga-2 mb-3">
+          <v-icon color="secondary" size="20">mdi-account-outline</v-icon>
+          <h3 class="text-subtitle-1 font-weight-bold mb-0">Your details (optional)</h3>
+        </div>
         <v-text-field v-model="name" label="Name" density="comfortable" class="mb-2" />
         <v-text-field v-model="phone" label="Phone number" density="comfortable" />
         <p class="text-caption text-medium-emphasis mb-0">

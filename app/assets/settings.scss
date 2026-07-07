@@ -1,11 +1,11 @@
 /**
- * "Heritage Modernist" theme - monochrome/grayscale design system, unified
- * on a single typeface (Hanken Grotesk) across every text role per spec.
+ * "Fresh Table" theme - a warm, colorful, quick-commerce-inspired design
+ * system unified on a single typeface (Hanken Grotesk).
  */
 @use 'vuetify/settings' with (
   $body-font-family: ('Hanken Grotesk', sans-serif),
   $heading-font-family: ('Hanken Grotesk', sans-serif),
-  $border-radius-root: 12px
+  $border-radius-root: 14px
 );
 
 * {
@@ -24,33 +24,40 @@
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #FFF8F3;
 }
 
-// Card surface - soft ambient shadow + hairline border per DESIGN.md
-// "Tonal Layering" elevation model.
+// Card surface - soft warm shadow + hairline border, lifts on hover/tap
 .app-card {
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
+  border: 1px solid rgba(255, 87, 34, 0.08);
+  border-radius: 16px;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 .app-card:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 24px rgba(255, 87, 34, 0.12);
 }
 .app-card--active {
-  border-color: #000;
-  box-shadow: 0 0 0 1px #000;
+  border-color: #FF5722;
+  box-shadow: 0 0 0 2px #FF5722;
 }
 
-// Docked black header, rounded at the bottom - the branded "sheet" used on
-// every ordering-flow screen (menu, cart, checkout, order tracking, history).
+// Docked gradient header, rounded at the bottom - the branded "sheet" used
+// on every ordering-flow screen (menu, cart, checkout, order tracking, history).
 .customer-hero {
-  background: #000000 !important;
-  border-radius: 0 0 32px 32px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #FF5722 0%, #FF8A50 100%) !important;
+  border-radius: 0 0 28px 28px;
+  box-shadow: 0 8px 24px rgba(255, 87, 34, 0.25);
   position: relative;
   z-index: 2;
+  overflow: hidden;
+}
+.customer-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 90% -10%, rgba(255, 255, 255, 0.18) 0%, transparent 55%);
+  pointer-events: none;
 }
 
 // Sticky bottom action bar pattern (item detail Add-to-cart, etc.)
@@ -60,29 +67,53 @@ body {
   left: 0;
   right: 0;
   background: #fff;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(255, 87, 34, 0.1);
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.1);
+  z-index: 950;
 }
 
-// Veg / non-veg selection indicator (minimalist square + centered dot)
+// Veg / non-veg selection indicator (square + centered dot, standard convention)
 .veg-indicator {
-  width: 14px;
-  height: 14px;
-  border: 1px solid #424242;
+  width: 15px;
+  height: 15px;
+  border: 1.5px solid #16A34A;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 2px;
-  border-radius: 2px;
+  border-radius: 3px;
+  flex-shrink: 0;
 }
 .veg-indicator .veg-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
 }
-.veg-indicator.is-veg .veg-dot { background-color: #5E7355; }
-.veg-indicator.is-nonveg { border-color: #8a2a2a; }
-.veg-indicator.is-nonveg .veg-dot { background-color: #8a2a2a; }
+.veg-indicator.is-veg { border-color: #16A34A; }
+.veg-indicator.is-veg .veg-dot { background-color: #16A34A; }
+.veg-indicator.is-nonveg { border-color: #E11D48; }
+.veg-indicator.is-nonveg .veg-dot { background-color: #E11D48; }
+
+// Colorful gradient badge tags (Recommended / Popular / Ready to serve, etc.)
+.badge-tag {
+  background: linear-gradient(120deg, #FF5722, #FF8A50);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.badge-tag.badge-tag--popular {
+  background: linear-gradient(120deg, #FFB300, #FF8A00);
+}
+.badge-tag.badge-tag--info {
+  background: linear-gradient(120deg, #2563EB, #3B82F6);
+}
 
 // Persistent bottom tab navigation (mobile app shell)
 .bottom-nav-bar {
@@ -92,9 +123,9 @@ body {
   right: 0;
   z-index: 900;
   background: #fff;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 16px 16px 0 0;
+  border-top: 1px solid rgba(255, 87, 34, 0.08);
+  box-shadow: 0 -6px 24px rgba(255, 87, 34, 0.1);
+  border-radius: 20px 20px 0 0;
 }
 .bottom-nav-item {
   display: flex;
@@ -102,16 +133,71 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  padding: 8px 12px;
-  color: #444444;
+  padding: 8px 20px;
+  color: #9c9c9c;
   font-size: 11px;
-  font-weight: 500;
-  transition: color 0.15s ease, transform 0.15s ease;
+  font-weight: 600;
+  border-radius: 14px;
+  transition: color 0.15s ease, transform 0.15s ease, background-color 0.15s ease;
 }
 .bottom-nav-item:active {
   transform: scale(0.94);
 }
 .bottom-nav-item.is-active {
-  color: #000000;
+  color: #FF5722;
   font-weight: 700;
+  background: rgba(255, 87, 34, 0.1);
+}
+
+// Colorful circular category icon chips (menu page category rail)
+.category-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 4px 2px;
+  min-width: 68px;
+}
+.category-chip-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+.category-chip.is-active .category-chip-icon {
+  border-color: #FF5722;
+  transform: translateY(-2px);
+}
+.category-chip-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #6b5648;
+  text-align: center;
+  max-width: 72px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.category-chip.is-active .category-chip-label {
+  color: #FF5722;
+  font-weight: 700;
+}
+
+// Promo / info banner strip
+.promo-banner {
+  border-radius: 18px;
+  padding: 16px 18px;
+  background: linear-gradient(120deg, #1F2937, #374151);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }

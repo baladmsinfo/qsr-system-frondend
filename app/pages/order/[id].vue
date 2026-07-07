@@ -11,14 +11,17 @@
       </div>
 
       <div class="app-card pa-4 mb-4">
-        <h3 class="text-subtitle-1 font-weight-bold mb-3">Order Summary</h3>
+        <div class="d-flex align-center ga-2 mb-3">
+          <v-icon color="primary" size="20">mdi-receipt-text-outline</v-icon>
+          <h3 class="text-subtitle-1 font-weight-bold mb-0">Order Summary</h3>
+        </div>
         <div v-for="item in order.currentOrder.orderItems" :key="item.id" class="d-flex justify-space-between text-body-2 mb-1">
           <span>{{ item.quantity }} &times; {{ item.menuItem?.name }}</span>
           <span class="mono-data">{{ $formatPrice(item.total) }}</span>
         </div>
         <v-divider class="my-2" />
         <div class="d-flex justify-space-between font-weight-bold">
-          <span>Total</span><span class="mono-data">{{ $formatPrice(order.currentOrder.totalAmount) }}</span>
+          <span>Total</span><span class="mono-data text-primary">{{ $formatPrice(order.currentOrder.totalAmount) }}</span>
         </div>
       </div>
 
