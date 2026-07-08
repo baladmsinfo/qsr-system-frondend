@@ -40,7 +40,9 @@
             <span class="text-caption text-uppercase font-weight-bold" style="letter-spacing: 0.06em; opacity: 0.85">Chef's Picks</span>
           </div>
           <div class="text-subtitle-1 font-weight-bold">{{ recommendedItems.length }} dishes our regulars love</div>
-          <span class="text-caption" style="opacity: 0.85">Ta        <v-icon color="white" size="40" style="opacity: 0.25">mdi-chef-hat</v-icon>
+          <span class="text-caption" style="opacity: 0.85">Tap to explore &rarr;</span>
+        </div>
+        <v-icon color="white" size="40" style="opacity: 0.25">mdi-chef-hat</v-icon>
       </div>
 
       <!-- Category rail -->
@@ -256,47 +258,5 @@ onMounted(async () => {
   .item-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-position: relative;
-  z-index: 3;
-  margin-top: -20px;
-}
-.search-field :deep(.v-field) {
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
-}
-.category-rail :deep(.v-slide-group__content) {
-  gap: 4px;
--top: -20px;
-}
-.search-field :deep(.v-field) {
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
-}
-.category-rail :deep(.v-slide-group__content) {
-  gap: 4px;
--top: -20px;
-}
-.search-field :deep(.v-field) {
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
-}
-.category-rail :deep(.v-slide-group__content) {
-  gap: 4px;
--top: -20px;
-}
-.search-field :deep(.v-field) {
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
-}
-.category-rail :deep(.v-slide-group__content) {
-  gap: 4px;
-in-top: -20px;
-}
-.search-field :deep(.v-field) {
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
-}
-.category-rail :deep(.v-slide-group__content) {
-  gap: 4px;
 }
 </style>
