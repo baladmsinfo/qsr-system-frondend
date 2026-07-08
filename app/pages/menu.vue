@@ -40,9 +40,7 @@
             <span class="text-caption text-uppercase font-weight-bold" style="letter-spacing: 0.06em; opacity: 0.85">Chef's Picks</span>
           </div>
           <div class="text-subtitle-1 font-weight-bold">{{ recommendedItems.length }} dishes our regulars love</div>
-          <span class="text-caption" style="opacity: 0.85">Tap to explore &rarr;</span>
-        </div>
-        <v-icon color="white" size="40" style="opacity: 0.25">mdi-food-turkey</v-icon>
+          <span class="text-caption" style="opacity: 0.85">Ta        <v-icon color="white" size="40" style="opacity: 0.25">mdi-chef-hat</v-icon>
       </div>
 
       <!-- Category rail -->
@@ -101,7 +99,9 @@
         <h3 class="text-subtitle-1 font-weight-bold mb-3">
           Results for "{{ search }}"
         </h3>
-        <ItemCard v-for="item in searchResults" :key="item.id" :item="item" @open="openItem" />
+        <div class="item-grid">
+          <ItemCard v-for="item in searchResults" :key="item.id" :item="item" @open="openItem" />
+        </div>
         <div v-if="!searchResults.length" class="text-center py-10">
           <v-icon size="48" color="secondary">mdi-food-off-outline</v-icon>
           <p class="text-medium-emphasis mt-3">No dishes match "{{ search }}"</p>
@@ -112,7 +112,9 @@
         <div v-for="group in visibleGroups" :key="group.key" class="mb-6">
           <h3 v-if="!group.sub" class="text-subtitle-1 font-weight-bold mb-3">{{ group.heading }}</h3>
           <h4 v-else class="text-subtitle-2 font-weight-bold mt-4 mb-3 text-secondary">{{ group.heading }}</h4>
-          <ItemCard v-for="item in group.items" :key="item.id" :item="item" @open="openItem" />
+          <div class="item-grid">
+            <ItemCard v-for="item in group.items" :key="item.id" :item="item" @open="openItem" />
+          </div>
         </div>
 
         <div v-if="!visibleGroups.length" class="text-center py-10">
@@ -139,6 +141,7 @@ const menu = useMenuStore()
 const search = ref('')
 const activeCategoryId = ref(null)
 const activeSubCategoryId = ref(null)
+const RECOMMENDED_SENTINEL = '__recommended__'
 
 const CATEGORY_ICONS = ['mdi-noodles', 'mdi-bowl-mix-outline', 'mdi-pizza', 'mdi-hamburger', 'mdi-cupcake', 'mdi-coffee', 'mdi-fruit-watermelon', 'mdi-rice', 'mdi-ice-cream', 'mdi-bread-slice']
 const CATEGORY_TINTS = [
@@ -168,11 +171,16 @@ const searchResults = computed(() => {
 
 const activeCategory = computed(() => menu.categories.find((c) => c.id === activeCategoryId.value) || null)
 const activeSubCategories = computed(() => activeCategory.value?.subCategories?.filter((s) => s.menuItems?.length) || [])
+const recommendedItems = computed(() => menu.allItems.filter((i) => i.isRecommended && i.availability === 'AVAILABLE'))
 
 // Groups the currently-selected category/subcategory scope into headed
 // sections for rendering - collapses to "All" (every category + subcategory)
 // when nothing is selected.
 const visibleGroups = computed(() => {
+  if (activeCategoryId.value === RECOMMENDED_SENTINEL) {
+    return [{ key: 'recommended', heading: "Chef's Picks", items: recommendedItems.value }]
+  }
+
   if (!activeCategoryId.value) {
     return menu.categories.flatMap((cat) => {
       const groups = []
@@ -223,6 +231,66 @@ onMounted(async () => {
   position: relative;
   z-index: 3;
   margin-top: -20px;
+}
+.search-field :deep(.v-field) {
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+.category-rail :deep(.v-slide-group__content) {
+  gap: 4px;
+}
+.promo-banner {
+  cursor: pointer;
+}
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (min-width: 600px) {
+  .item-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 960px) {
+  .item-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+position: relative;
+  z-index: 3;
+  margin-top: -20px;
+}
+.search-field :deep(.v-field) {
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+.category-rail :deep(.v-slide-group__content) {
+  gap: 4px;
+-top: -20px;
+}
+.search-field :deep(.v-field) {
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+.category-rail :deep(.v-slide-group__content) {
+  gap: 4px;
+-top: -20px;
+}
+.search-field :deep(.v-field) {
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+.category-rail :deep(.v-slide-group__content) {
+  gap: 4px;
+-top: -20px;
+}
+.search-field :deep(.v-field) {
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+}
+.category-rail :deep(.v-slide-group__content) {
+  gap: 4px;
+in-top: -20px;
 }
 .search-field :deep(.v-field) {
   border-radius: 14px;
