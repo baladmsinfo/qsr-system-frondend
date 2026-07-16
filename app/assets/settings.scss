@@ -1,53 +1,54 @@
 /**
- * "Fresh Table" theme - a warm, colorful, quick-commerce-inspired design
- * system unified on a single typeface (Hanken Grotesk).
+ * "Coffee House" theme - a warm, elegant design system (brewed brown +
+ * gold on cream) pairing a serif display face for headings with a clean
+ * sans for body copy.
  */
 @use 'vuetify/settings' with (
-  $body-font-family: ('Hanken Grotesk', sans-serif),
-  $heading-font-family: ('Hanken Grotesk', sans-serif),
+  $body-font-family: ('Poppins', sans-serif),
+  $heading-font-family: ('Playfair Display', serif),
   $border-radius-root: 14px
 );
 
 * {
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .text-h1, .text-h2, .text-h3, .text-h4, .text-h5, .text-h6,
-.font-weight-bold, .font-weight-semibold, .v-card-title, .v-toolbar-title {
-  font-family: 'Hanken Grotesk', sans-serif;
-  letter-spacing: -0.01em;
+.v-card-title, .v-toolbar-title {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.1px;
 }
 
 .mono-data {
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
 }
 
 body {
-  background-color: #FFF8F3;
+  background-color: #FDF8EE;
 }
 
 // Card surface - soft warm shadow + hairline border, lifts on hover/tap
 .app-card {
   background: #fff;
-  border: 1px solid rgba(255, 87, 34, 0.08);
+  border: 1px solid rgba(107, 58, 26, 0.1);
   border-radius: 16px;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 .app-card:hover {
-  box-shadow: 0 6px 24px rgba(255, 87, 34, 0.12);
+  box-shadow: 0 6px 24px rgba(107, 58, 26, 0.14);
 }
 .app-card--active {
-  border-color: #FF5722;
-  box-shadow: 0 0 0 2px #FF5722;
+  border-color: #6B3A1A;
+  box-shadow: 0 0 0 2px #6B3A1A;
 }
 
 // Docked gradient header, rounded at the bottom - the branded "sheet" used
 // on every ordering-flow screen (menu, cart, checkout, order tracking, history).
 .customer-hero {
-  background: linear-gradient(135deg, #FF5722 0%, #FF8A50 100%) !important;
+  background: linear-gradient(135deg, #4A2712 0%, #6B3A1A 100%) !important;
   border-radius: 0 0 28px 28px;
-  box-shadow: 0 8px 24px rgba(255, 87, 34, 0.25);
+  box-shadow: 0 8px 24px rgba(74, 39, 18, 0.3);
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -56,7 +57,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 90% -10%, rgba(255, 255, 255, 0.18) 0%, transparent 55%);
+  background: radial-gradient(circle at 90% -10%, rgba(224, 179, 84, 0.25) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -96,7 +97,7 @@ body {
 
 // Colorful gradient badge tags (Recommended / Popular / Ready to serve, etc.)
 .badge-tag {
-  background: linear-gradient(120deg, #FF5722, #FF8A50);
+  background: linear-gradient(120deg, #6B3A1A, #8A4D22);
   color: #fff;
   font-size: 10px;
   font-weight: 700;
@@ -109,7 +110,8 @@ body {
   gap: 3px;
 }
 .badge-tag.badge-tag--popular {
-  background: linear-gradient(120deg, #FFB300, #FF8A00);
+  background: linear-gradient(120deg, #C9962F, #E0B354);
+  color: #2A1C10;
 }
 .badge-tag.badge-tag--info {
   background: linear-gradient(120deg, #2563EB, #3B82F6);
@@ -123,8 +125,8 @@ body {
   right: 0;
   z-index: 900;
   background: #fff;
-  border-top: 1px solid rgba(255, 87, 34, 0.08);
-  box-shadow: 0 -6px 24px rgba(255, 87, 34, 0.1);
+  border-top: 1px solid rgba(107, 58, 26, 0.08);
+  box-shadow: 0 -6px 24px rgba(107, 58, 26, 0.1);
   border-radius: 20px 20px 0 0;
 }
 .bottom-nav-item {
@@ -144,9 +146,9 @@ body {
   transform: scale(0.94);
 }
 .bottom-nav-item.is-active {
-  color: #FF5722;
+  color: #6B3A1A;
   font-weight: 700;
-  background: rgba(255, 87, 34, 0.1);
+  background: rgba(107, 58, 26, 0.1);
 }
 
 // Colorful circular category icon chips (menu page category rail)
@@ -174,7 +176,7 @@ body {
   background-position: center;
 }
 .category-chip.is-active .category-chip-icon {
-  border-color: #FF5722;
+  border-color: #6B3A1A;
   transform: translateY(-2px);
 }
 .category-chip-label {
@@ -188,7 +190,7 @@ body {
   text-overflow: ellipsis;
 }
 .category-chip.is-active .category-chip-label {
-  color: #FF5722;
+  color: #6B3A1A;
   font-weight: 700;
 }
 
@@ -196,7 +198,7 @@ body {
 .promo-banner {
   border-radius: 18px;
   padding: 16px 18px;
-  background: linear-gradient(120deg, #1F2937, #374151);
+  background: linear-gradient(120deg, #4A2712, #6B3A1A);
   color: #fff;
   position: relative;
   overflow: hidden;

@@ -49,7 +49,7 @@
       <v-slide-group v-if="!search" show-arrows class="mb-3 category-rail">
         <v-slide-group-item>
           <div class="category-chip" :class="{ 'is-active': !activeCategoryId }" @click="selectCategory(null)">
-            <div class="category-chip-icon" style="background: linear-gradient(135deg, #FF5722, #FF8A50)">
+            <div class="category-chip-icon" style="background: linear-gradient(135deg, #6B3A1A, #8A4D22)">
               <v-icon color="white" size="26">mdi-view-grid</v-icon>
             </div>
             <span class="category-chip-label">All</span>

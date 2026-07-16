@@ -65,6 +65,8 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useMenuStore } from '@/stores/menu'
+import { useSiteStore } from '@/stores/site'
+import { useSiteService } from '@/services/siteService'
 
 // Deliberately no 'table' middleware and no session.setFromQr() - this is a
 // read-only menu card (scan -> browse -> tell the waiter), not a
@@ -73,6 +75,7 @@ definePageMeta({ layout: 'default' })
 
 const route = useRoute()
 const menu = useMenuStore()
+const siteStore = useSiteStore()
 const { $axios } = useNuxtApp()
 
 const loading = ref(true)
@@ -90,6 +93,20 @@ onMounted(async () => {
 
     branch.value = res.data.data
     await menu.fetchMenu(branch.value.id)
+
+    // Best-effort: resolve the full storefront so navigating to "/" from this
+    // read-only menu card shows the real store info instead of the generic
+    // scan splash (this page never touches the session/table store).
+    const tenantSlug = branch.value.company?.tenant
+    if (tenantSlug) {
+      try {
+        const { fetchTenantSite } = useSiteService()
+        const site = await fetchTenantSite(tenantSlug)
+        siteStore.setResolved(tenantSlug, site)
+      } catch {
+        // Non-fatal - the menu card itself is still valid without this.
+      }
+    }
   } catch (err) {
     error.value = 'This menu could not be found'
   } finally {

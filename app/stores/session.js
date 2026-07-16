@@ -10,6 +10,7 @@ export const useSessionStore = defineStore('session', {
     companyId: null,
     companyName: null,
     branchName: null,
+    tenantSlug: null,
     isOnline: true,
     acceptOrders: true,
     customerName: null,
@@ -40,6 +41,7 @@ export const useSessionStore = defineStore('session', {
       this.companyId = table.branch.companyId
       this.companyName = table.branch.company?.name || null
       this.branchName = table.branch.name
+      this.tenantSlug = table.branch.company?.tenant || null
       this.isOnline = table.branch.isOnline
       this.acceptOrders = table.branch.acceptOrders
       this.persist()

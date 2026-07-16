@@ -17,12 +17,15 @@
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
+import { useSiteStore } from '@/stores/site'
+import { useSiteService } from '@/services/siteService'
 
 definePageMeta({ layout: 'default' })
 
 const route = useRoute()
 const router = useRouter()
 const session = useSessionStore()
+const siteStore = useSiteStore()
 const { $axios } = useNuxtApp()
 
 const error = ref(null)
@@ -43,6 +46,22 @@ onMounted(async () => {
     }
 
     session.setFromQr(table)
+
+    // Best-effort: also resolve the full storefront (logo, description, all
+    // branches) so that navigating back to "/" during this session shows the
+    // real store info instead of the generic "Scan to Order" splash. A QR
+    // scan never goes through the tenant subdomain, so without this the site
+    // store would otherwise stay empty for the whole ordering session.
+    if (session.tenantSlug) {
+      try {
+        const { fetchTenantSite } = useSiteService()
+        const site = await fetchTenantSite(session.tenantSlug)
+        siteStore.setResolved(session.tenantSlug, site)
+      } catch {
+        // Non-fatal - the table session itself is still valid without this.
+      }
+    }
+
     setTimeout(() => router.replace('/menu'), 600)
   } catch (err) {
     error.value = 'This QR code could not be found'

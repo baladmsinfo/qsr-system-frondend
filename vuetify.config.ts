@@ -1,7 +1,7 @@
 import { defineVuetifyConfiguration } from "vuetify-nuxt-module/custom-configuration";
 
-// "Fresh Table" theme - a warm, colorful, appetite-inducing palette in the
-// spirit of modern quick-commerce apps (Swiggy/Zomato/Instamart), while
+// "Coffee House" theme - a warm, elegant palette (coffee brown + brewed
+// gold on cream) evoking traditional filter-coffee/tiffin houses, while
 // keeping the app's single-brand QSR identity (no marketplace chrome).
 export default defineVuetifyConfiguration({
   theme: {
@@ -9,20 +9,20 @@ export default defineVuetifyConfiguration({
     themes: {
       light: {
         colors: {
-          primary: "#5B21B6",
-          "primary-darken-1": "#471b8f",
-          "primary-lighten-1": "#6825d2",
-          secondary: "#00A86B",
-          "secondary-darken-1": "#00875A",
-          accent: "#e3a7fb",
+          primary: "#6B3A1A",
+          "primary-darken-1": "#4A2712",
+          "primary-lighten-1": "#8A4D22",
+          secondary: "#C9962F",
+          "secondary-darken-1": "#A97A22",
+          accent: "#E0B354",
           success: "#16A34A",
           warning: "#F59E0B",
-          error: "#E11D48",
+          error: "#B3261E",
           info: "#2563EB",
-          background: "#FFF8F3",
+          background: "#FDF8EE",
           surface: "#FFFFFF",
-          "surface-variant": "#FFEDE0",
-          "on-surface-variant": "#8A5A3B",
+          "surface-variant": "#F0E1C2",
+          "on-surface-variant": "#6B5847",
         },
       },
     },
